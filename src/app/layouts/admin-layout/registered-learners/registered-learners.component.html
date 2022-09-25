@@ -1,0 +1,55 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-danger">
+                  <h4 class="card-title ">Learners</h4>
+                  <p class="card-category"> List of learners offered atJohannesbug Hotel</p>
+
+
+
+
+              </div>
+                  <div class="card-body">
+
+                    <div class="form-group">
+                      <input type="text" class="form-control mb-4" placeholder="Search" [(ngModel)]="query" id="listSearch">
+                    </div>
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                    FirstName
+                                  </th>
+                                  <th>
+                                    Surname
+                                  </th>
+                                  <th>
+                                    UserType
+                                  </th>
+
+                              </thead>
+                              <tbody>
+
+                                  <tr *ngFor="let user  of learners| filter: query" >
+                                    <td>
+                                      {{user.FirstName}}
+                                    </td>
+                                    <td >
+                                      {{user.Surname}}
+
+                                    </td>
+                                      <td >
+                                        {{getUserTypeDesc(user.UserTypeId)}}
+                                    </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>

@@ -1,0 +1,26 @@
+<h3 mat-dialog-title align="center"> Centre </h3>
+<form class="example-form" [formGroup]="formCentre" autocomplete="off" (submit)="onSubmit()">
+<div mat-dialog-content></div>
+<div mat-dialog-content>
+
+        <mat-form-field class="example-full-width" >
+            <mat-label>Course Description</mat-label>
+            <input matInput placeholder="ex. Midrand c"  formControlName="CourseDesc" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" >
+          <mat-label>Student Type</mat-label>
+          <mat-select formControlName="SubjectId">
+            <mat-option *ngFor="let item of subjects" [value]="item.SubjectId">
+              {{item.SubjectDesc}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button type="submit">Confirm</button>
+    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+</div>
+
+</form>

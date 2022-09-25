@@ -1,0 +1,32 @@
+<h3 mat-dialog-title align="center"> {{isEditable ? 'Editable' : 'Add New Room'}} </h3>
+<form class="example-form" [formGroup]="formCentre" autocomplete="off" (submit)="onSubmit()">
+<div mat-dialog-content></div>
+<div mat-dialog-content>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Room Number</mat-label>
+            <input matInput placeholder="ex. Midrand c"  formControlName="roomNumber" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Room Name</mat-label>
+            <input matInput placeholder="" formControlName="roomName" >
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose Room Type</mat-label>
+          <mat-select formControlName="typeId" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let roomType of roomsType" [value]="roomType.Id">
+              {{roomType.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button type="submit">Confirm</button>
+    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+</div>
+
+</form>

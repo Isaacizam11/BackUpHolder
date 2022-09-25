@@ -1,0 +1,120 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <!-- <img src="./assets/logo-only.png" alt="Hello" class="img"> -->
+    <mat-card class="example-card ">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>house</mat-icon>
+        <mat-card-title>Check Rooms Available</mat-card-title>
+        <mat-card-subtitle>Select the parameters to filter the learners</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <div>
+              <mat-form-field class="m-2">
+                <mat-label>Choose Room Type</mat-label>
+                <mat-select (selectionChange)="onSelect($event)">
+                  <mat-option *ngFor="let item of roomTypes" [value]="item.Id">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col">
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>Enter a date range</mat-label>
+              <mat-date-range-input [rangePicker]="rangePicker" [formGroup]="range">
+                <input matStartDate formControlName="start" placeholder="Start date">
+                <input matEndDate formControlName="end" placeholder="End date">
+              </mat-date-range-input>
+              <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #rangePicker>
+                <mat-date-range-picker-actions>
+                  <button mat-button matDateRangePickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                </mat-date-range-picker-actions>
+              </mat-date-range-picker>
+            </mat-form-field>
+            <!-- <p>Selected range: {{range.value | json}}</p> -->
+          </div>
+          <div class="col">
+
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-select [formControl]="amenitiesMultiCtrl" placeholder="Banks" [multiple]="true" #multiSelect>
+                <mat-option>
+                  <ngx-mat-select-search [formControl]="amenitiesMultiFilterCtrl"></ngx-mat-select-search>
+
+                </mat-option>
+                <mat-option *ngFor="let amenity of filteredMulti | async" [value]="amenity">
+                  {{amenity.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- <ul *ngFor="let bank of amenitiesMultiCtrl?.value">
+              <li>{{bank.Name}}</li>
+            </ul> -->
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button mat-stroked-button
+         >Cancel</button>
+          <button mat-raised-button color="warn"    (click)="checkRoomAvailability(range.value,amenitiesMultiCtrl?.value)">View Available Rooms<</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+    <div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="justify-content-between">
+            <mat-spinner *ngIf="$loader | async as boolean;else cards"></mat-spinner>
+          </div>
+          <ng-template #cards>
+            <ng-container *ngIf="roomsAvailable.length ==0">
+              <div class="card">
+                <h3>No rooms available for the selected days.</h3>
+              </div>
+            </ng-container>
+            <div class="card" *ngFor="let room of roomsAvailable">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">{{room.roomName}}</h4>
+                <p class="card-category">
+                  <i class="material-icons text-danger">warning</i>
+                  <a href="#pablo">{{room.numberOfAvailableRooms}} Rooms Available</a>
+                </p>
+              </div>
+              <div class="card-body">
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <mat-chip color="primary" selected style="font-size: 16px; font-weight: bold;">R{{room.rate}} Per Day</mat-chip>
+                </div>
+                <h5 class="card-title">Amenities
+                </h5>
+                <ul *ngFor="let amenity of room.Amenities ">
+                  <li>{{amenity}}</li>
+                </ul>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button mat-raised-button color="danger"  (click)="Book(room.id)" class="btn orange">Book Room</button>
+              </div>
+              </div>
+
+            </div>
+
+          </ng-template>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

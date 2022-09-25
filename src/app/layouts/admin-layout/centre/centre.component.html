@@ -1,0 +1,64 @@
+<div>
+  <img src="./assets/logo-only.png" alt="Hello" class="img">
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Centres</h4>
+                    <p class="card-category"> List ofJohannesbug Hotel centres</p>
+
+                    <div class="align-left float-right">
+                        <button class="addbutton" mat-icon-button style="font-size: xx-large" (click)="AddCentre()"
+                        title="Add Centre">
+                      </button>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                      </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>
+                                    Centre
+                                </th>
+                                <th>
+                                    Edit
+                                </th>
+                                <th>
+                                    Delete
+                                </th>
+
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let center  of centres| filter: query" >
+                                  <td>
+                                    {{center.CentreName}}
+                                  </td>
+                                  <td >
+                                    <button mat-icon-button (click)="EditCentre(center)"
+                                       title="Edit Centre">
+                                        <mat-icon>edit</mat-icon>
+                                     </button>
+                                  </td>
+                                    <td >
+                                      <button mat-icon-button (click)="RemoveCourse(center.CentreId)"
+                                         title="Delete Centre">
+                                          <mat-icon >delete</mat-icon>
+                                       </button>
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

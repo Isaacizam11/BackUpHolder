@@ -1,0 +1,68 @@
+<div>
+  <img src="./assets/logo-only.png" alt="Hello" class="img">
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Courses</h4>
+                    <p class="card-category"> List of courses offered atJohannesbug Hotel</p>
+                    <button class="addbutton" mat-icon-button style="font-size: xx-large" (click)="AddCourse()"
+                    title="Add Course">
+                     <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <input type="text" class="form-control mb-4" placeholder="Search" [(ngModel)]="query" id="listSearch">
+                  </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>
+                                    Course
+                                </th>
+                                <th>
+                                  Subject
+                              </th>
+                                <th>
+                                    Edit
+                                </th>
+                                <th>
+                                    Delete
+                                </th>
+
+                            </thead>
+                            <tbody>
+
+                              <tr *ngFor="let course  of courses| filter: query" >
+                                <td>
+                                  {{course.CourseDesc}}
+                                </td>
+                                <td>
+                                  {{course.Subject}}
+                                </td>
+                                <td >
+                                  <button mat-icon-button (click)="EditCourse(course)"
+                                     title="Edit Centre">
+                                      <mat-icon>edit</mat-icon>
+                                   </button>
+                                </td>
+                                  <td >
+                                    <button mat-icon-button (click)="RemoveCourse(course.CourseId)"
+                                       title="Delete Centre">
+                                        <mat-icon >delete</mat-icon>
+                                     </button>
+                                </td>
+                              </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

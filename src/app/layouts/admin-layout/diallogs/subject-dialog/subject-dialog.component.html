@@ -1,0 +1,17 @@
+<h3 mat-dialog-title align="center"> Subject</h3>
+<form class="example-form" [formGroup]="formSubject" autocomplete="off" (submit)="onSubmit()">
+<div mat-dialog-content></div>
+<div mat-dialog-content>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Subject Name</mat-label>
+            <input matInput placeholder="ex. Midrand c"  formControlName="SubjectDesc" >
+        </mat-form-field>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button type="submit">Confirm</button>
+    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+</div>
+
+</form>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,IAAI,CAAA;EACA,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,MAAM;EAEjB,kCAAkC;EAClC,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,GAAG;EAEX,wBAAwB;EACxB,QAAQ,EAAE,KAAK;EACf,GAAG,EAAE,GAAG;EACR,IAAI,EAAE,CAAC;CACV;;AACD,AAAA,UAAU,CAAA;EACN,KAAK,EAAE,EAAE;CACZ",
+    "sources": [
+        "centre.component.scss"
+    ],
+    "names": [],
+    "file": "centre.component.css"
+}

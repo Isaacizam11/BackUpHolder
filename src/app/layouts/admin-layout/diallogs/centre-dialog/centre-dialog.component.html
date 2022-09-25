@@ -1,0 +1,23 @@
+<h3 mat-dialog-title align="center"> Centre </h3>
+<form class="example-form" [formGroup]="formCentre" autocomplete="off" (submit)="onSubmit()">
+<div mat-dialog-content></div>
+<div mat-dialog-content>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Centre Name</mat-label>
+            <input matInput placeholder="ex. Midrand c"  formControlName="CentreName" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Centre Location</mat-label>
+            <input matInput placeholder="" formControlName="CentreLocation" >
+
+        </mat-form-field>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button type="submit">Confirm</button>
+    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+</div>
+
+</form>

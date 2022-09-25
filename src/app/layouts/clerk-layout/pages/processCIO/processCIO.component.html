@@ -1,0 +1,76 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+
+              <div class="jumbotron">
+                <div class="row" *ngFor="let user of roomsBooked">
+                  <div class="col-md-8">
+                    <div class="card" >
+                      <div class="card-header card-header-primary">
+                        <h4 class="card-title">Number of Rooms Booked {{user.BookedRooms.length}}</h4>
+                        <p class="card-category">
+                          <i class="material-icons text-danger">house</i>
+                        </p>
+                      </div>
+                      <div class="card-body">
+
+                        <p>
+                          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseE">View Customer Rooms</button>
+                        </p>
+                        <div class="row" *ngFor="let room of user.BookedRooms ">
+                          <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseE">
+                              <div class="card card-body">
+
+                                <div class="row">
+                                  <div class="col">
+                                    <span class="badge rounded-pill text-bg-warning">{{room.startDate | date}}</span> -
+                                    <span class="badge rounded-pill text-bg-warning">{{room.endDate | date }}</span>
+                                    <hr>
+                                    <h5 class="card-title">Amenities
+                                    </h5>
+                                    <ul *ngFor="let amenity of room.amenities ">
+                                      <li>{{amenity.Name}}</li>
+                                    </ul>
+                                  </div>
+                                  <div class="col align-middle">
+                                    <span class="badge badge-pill badge-info" style="font-size: 16px; font-weight: bold;">{{room.status ? 'checked in': 'booked'}}</span>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                      <button mat-raised-button (click)="Check(room,true, user)" [disabled]="room.status" class="btn btn-warning">Check In</button>
+                                      <button mat-raised-button (click)="Check(room, false, user)" [disabled]="!room.status" class="btn orange">Check Out</button>
+
+                                      </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-body">
+                            <h6 class="card-category text-gray">Customer info</h6>
+                            <h4 class="card-title">{{user.FirstName}} {{user.Surname}}</h4>
+                            <p class="card-description">
+                                Username: {{user.Username}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+          </div>
+
+      </div>
+  </div>
+</div>

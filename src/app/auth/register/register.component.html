@@ -1,0 +1,84 @@
+<div>
+  <img src="https://www.premierhotels.co.za/wp-content/uploads/2018/07/ph_elicc_pool_2000.jpg" alt="Hello" class="img">
+  <mat-card class="example-card">
+    <form [formGroup]="formModel" autocomplete="off" (submit)="onSubmit()">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>person_add</mat-icon>
+        <mat-card-title>Guest Registration</mat-card-title>
+        <mat-card-subtitle>Please fill in the following input fields</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <div class="row">
+          <div class="col">
+
+            <mat-form-field appearance="outline">
+              <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</mat-label>
+              <input matInput placeholder="ex. 'Tristan'" formControlName="FirstName" required>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+              <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</mat-label>
+              <input matInput placeholder="ex. 'Ogle'" formControlName="Surname" required>
+            </mat-form-field>
+
+
+
+          </div>
+          <div class="col">
+
+            <mat-form-field appearance="outline">
+              <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Username</mat-label>
+              <input matInput placeholder="ex. 'user1234'" formControlName="Email">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="m-2">
+              <mat-label>Id Number</mat-label>
+              <input type="number" matInput placeholder="ex. 'ID Number'" formControlName="IdNumber">
+            </mat-form-field>
+            <div formGroupName="Passwords">
+              <mat-form-field appearance="outline">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Password</mat-label>
+                <input matInput type="password" placeholder="ex. 'Tristan'" formControlName="Password" required>
+                <label class="text-danger"
+                  *ngIf="formModel.get('Passwords.Password').touched && formModel.get('Passwords.Password').errors?.required">Field
+                  is mandatory.</label>
+                <label class="text-danger"
+                  *ngIf="formModel.get('Passwords.Password').touched && formModel.get('Passwords.Password').errors?.minlength">Minimum
+                  4 characters.</label>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Confirm Password</mat-label>
+                <input matInput type="password" placeholder="Confirm  Password" formControlName="ConfirmPassword"
+                  required>
+                <label class="text-danger"
+                  *ngIf="formModel.get('Passwords.ConfirmPassword').touched && formModel.get('Passwords.ConfirmPassword').errors?.required">Field
+                  is mandatory.</label>
+                <label class="text-danger"
+                  *ngIf="formModel.get('Passwords.ConfirmPassword').touched && formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm
+                  Password does not match</label>
+
+              </mat-form-field>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button mat-stroked-button type="submit">Register</button>
+
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+
+</div>

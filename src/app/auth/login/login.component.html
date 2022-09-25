@@ -1,0 +1,21 @@
+<div>
+  <img src="https://travelji.com/wp-content/uploads/Hotel-Tips.jpg" alt="Hello" class="img">
+<div class="wrapper">
+
+  <div class="container">
+
+    <div class="signup" (click)="register()">Sign Up</div>
+    <div class="login">Log In</div>
+    <form [formGroup]="formModel" autocomplete="off" (submit)="onSubmit()">
+    <div class="login-form">
+        <input type="text"  formControlName="Email" placeholder="Email or Username" class="input"><br />
+        <input type="password"  formControlName="Password" placeholder="Password" class="input"><br />
+        <button class="btn"  type="submit"  [disabled]="!formModel.valid">log in</button>
+        <span><a href="#">I forgot my username or password.</a></span>
+     </div>
+    </form>
+  </div>
+</div>
+</div>
+
+
